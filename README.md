@@ -18,8 +18,13 @@ By the way what is a straight way ? a way in which the angle between each segmen
 The current algorithm is currently in beta and under test so consider it as an experiment.
 
 Determines node density of ways. Accepts an OSM json file format as input
+
 Usage
+
 NodeDensity.py jsonfile [-v] [-d] [-csv]
+
 -v    Verbose output
+
 -d    Debug output
+
 -csv  CSV output (overrides -d and -v switches)
