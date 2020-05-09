@@ -18,7 +18,7 @@ def getNode(id):
     return None
 
 # Get distance between two point using "Spherical law of cosines" https://mathworld.wolfram.com/SphericalTrigonometry.html
-# This method is 30% faster that haversine
+# This method is 30% faster than haversine
 def getDistance(pLat,pLon,cLat,cLon):
     x=math.acos(math.cos(math.radians(90-pLat))*math.cos(math.radians(90-cLat))+math.sin(math.radians(90-pLat))*math.sin(math.radians(90-cLat))*math.cos(math.radians(pLon-cLon))) *6371*1000
     return x
