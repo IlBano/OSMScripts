@@ -15,7 +15,7 @@ Density of curves can be thought as related to the length of the curve, the numb
 When talking about straight ways we should opt for a simple calculation based on the length of the way and the number of nodes.
 That is to say that ND of straight ways cannot be compared to the ND of curved ways.
 By the way what is a straight way ? a way in which the angle between each segment and the previous is below a certain amount (currently 8°).
-The current algorithm is currently in beta and under test so consider it as an experiment.
+The algorithm is currently in beta and under test so consider it as an experiment.
 
 Determines node density of ways. Accepts an OSM json file format as input
 
