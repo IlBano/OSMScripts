@@ -43,8 +43,12 @@ def loadData():
     
     for item in JSONdata['elements']:
         if item['type']=='node':
-            updateWay(item['tags']['addr:street'],item['tags']['addr:housenumber'],item['id'],item['lat'],item['lon'])
+            try:
+                addrStreet=item['tags']['addr:street']
+            except:
+                addrStreet="Unknown way"
 
+            updateWay(addrStreet,item['tags']['addr:housenumber'],item['id'],item['lat'],item['lon'])
 
 # check command line arguments
 if len(sys.argv)==1:
