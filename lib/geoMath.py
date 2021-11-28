@@ -1,4 +1,3 @@
-
 import math
   
 def getMidpoint(pLat,pLon,cLat,cLon):
@@ -16,11 +15,17 @@ def getMidpoint(pLat,pLon,cLat,cLon):
 # Get distance between two point using "Spherical law of cosines" https://mathworld.wolfram.com/SphericalTrigonometry.html
 # This method is 30% faster that haversine
 def getDistance(pLat,pLon,cLat,cLon):
+    if pLat==cLat and pLon==cLon:
+        return 0
+      
     x=math.acos(math.cos(math.radians(90-pLat))*math.cos(math.radians(90-cLat))+math.sin(math.radians(90-pLat))*math.sin(math.radians(90-cLat))*math.cos(math.radians(pLon-cLon))) *6371*1000
     return x
 
 # Get distance between two point using "Haversine" formula https://en.wikipedia.org/wiki/Haversine_formula
 def getDistance2(pLat,pLon,cLat,cLon):
+    if pLat==cLat and pLon==cLon:
+        return 0
+
     R = 6371*1000
     lat1=math.radians(pLat)
     lat2=math.radians(cLat)
