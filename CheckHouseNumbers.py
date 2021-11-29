@@ -50,11 +50,12 @@ def loadData():
 
             updateWay(addrStreet,item['tags']['addr:housenumber'],item['id'],item['lat'],item['lon'])
 
+
 # check command line arguments
-if len(sys.argv)==1:
+if len(sys.argv)==0:
     print('CheckHouseNumbers.py',_version)
-    print('Starting from a JSON containing addr:housenumber nodes generates an OSM file with ways (2 for each highway name - odd numbers and even numbers) composed by those nodes sorted')
-    print('This OSM file can be opened in JOSM to get a visual aid for housenumbers QA/cleanup activities\n')
+    print('Starting from a JSON containing addr:housenumber nodes generates an OSM file with ways (2 for each highway name - odd numbers and even numbers) composed by those nodes sorted.')
+    print('This OSM file can be opened in JOSM to get a visual aid for housenumbers QA/cleanup activities.\n')
     print('Usage')
     print('CheckHouseNumbers.py jsonfile [-nooddeven]\n')
     print('-nooddeven\tgenerates only 1 way per highway name with all housenumbers')
@@ -70,9 +71,12 @@ for c in range(2,len(sys.argv)):
         #print("Ignoring argument",tArg)
         pass
 
+
 try:
-    mJSONFile=open(sys.argv[1])
-    #mJSONFile=open('D:\\dev\\Python\\CheckHouseNumbers\\testPV.json')
+    fname=sys.argv[1]
+    #fname='D:\\dev\\Python\\CheckHouseNumbers\\pezzana.json'
+    mJSONFile=open(fname)
+    
 except:
     print('Cannot open file')
     quit()
@@ -84,6 +88,10 @@ with mJSONFile as json_file:
     except:
         print('Not a JSON file!')
         quit()
+    
+    exFile = open(fname+".ex.txt","w")
+    exFile.write("Exceptions\n")
+
 
     # declare lists
     wayNames=[]
@@ -105,6 +113,17 @@ with mJSONFile as json_file:
             print('  <node id="',ntemp[m][1],'" lat="',ntemp[m][2],'" lon="',ntemp[m][3],'" version="10">',sep='')
             print('    <tag k="addr:housenumber" v="',ntemp[m][0],'"/>',sep='')
             print('    <tag k="addr:street" v="',wname,'"/>',sep='')
+            
+            
+            if m<(len(ntemp)-1):
+                chn=ntemp[m][5]
+                nhn=ntemp[m+1][5]
+                if int(nhn) > int(chn)+1:
+                    exFile.write("way: "+wname+" missing "+str(int(chn)+1))
+                    if int(nhn)-1 > int(chn)+1:
+                        exFile.write("-"+str(int(nhn)-1))
+                    exFile.write("\n")
+         
             print('  </node>')
 
     # outputs all ways
@@ -149,5 +168,7 @@ with mJSONFile as json_file:
             wid=wid-1
 
     print('</osm>')
+    exFile.close()
+
 
     
