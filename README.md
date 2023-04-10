@@ -1,21 +1,22 @@
 # OSM Scripts
 ## GetOSMComments.py
+Get changeset comments of specified users from an OSM discussions dump. Writes output (changeset id, user, comment date and comment) in a csv file **(N.B. this pre-release has no error checking)**
+
 *Usage*
-GetOSMComments.py [-h] usernames discussionfile outfile
 
-*Get changeset comments of specified users from an OSM discussions dump. Writes output (changeset id, user, comment date and comment) in a csv file
+*GetOSMComments.py [-h] usernames discussionfile outfile*
 
-*positional arguments:
+*positional arguments:*
 
-*usernames       comma separated list of OSM usernames
+*usernames       comma separated list of OSM usernames*
 
-*discussionfile  OSM discussion dump obtained from planet.osm.org. N.B. must be already in .osm format
+*discussionfile  OSM discussion dump obtained from planet.osm.org. N.B. must be already in .osm format*
 
-*outfile         csv output file
+*outfile         csv output file*
 
-*optional arguments:
+*optional arguments:*
 
-*-h, --help      show this help message and exit
+*-h, --help      show this help message and exit*
 
 ## Checkroundabouts.py
 Counts roundabouts in a json containing OSM data. Json file should contain ways and nodes already filtered for tag junction=roundabout
