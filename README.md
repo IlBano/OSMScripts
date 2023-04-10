@@ -6,11 +6,15 @@ GetOSMComments.py [-h] usernames discussionfile outfile
 *Get changeset comments of specified users from an OSM discussions dump. Writes output (changeset id, user, comment date and comment) in a csv file
 
 *positional arguments:
+
 *usernames       comma separated list of OSM usernames
+
 *discussionfile  OSM discussion dump obtained from planet.osm.org. N.B. must be already in .osm format
+
 *outfile         csv output file
 
 *optional arguments:
+
 *-h, --help      show this help message and exit
 
 ## Checkroundabouts.py
