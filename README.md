@@ -1,4 +1,7 @@
 # OSM Scripts
+## GetOSMComments2.py
+Same as GetOSMComments.py, but with a line-by-line parser to improve speed and support for bz2 compressed file
+
 ## GetOSMComments.py
 Get changeset comments of specified users from an OSM discussions dump. Writes output (changeset id, user, comment date and comment) in a csv file **(N.B. this pre-release has no error checking)**
 
