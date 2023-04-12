@@ -69,7 +69,7 @@ for tline in inFile:
                 if pTextEnd==-1: # if no text end tag
                     fAppendText=True # flag to mark the presence of further comment lines
                     coText=tline[6:] # get first line of the comment starting from first char after <text> tag
-                else: # we have a text end tag, so the comment is on a single line. We copy what's bewteen text start and end tags
+                else: # we have a text end tag, so the comment is on a single line. We copy what's between text start and end tags
                     coText=tline[6:pTextEnd]
     
     if not fAppendText and coText!="": # if we have nothing more to append and the text is not empty, it's time to write the comment and its metadata
